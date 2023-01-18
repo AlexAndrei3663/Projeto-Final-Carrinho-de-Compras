@@ -1,0 +1,63 @@
+#titulo{
+    
+text-align: center;
+    
+font: 200% "Trebuchet MS", sans-serif;
+    
+border: #000 double 5px;
+    
+margin: 0px 100px 50px 100px;
+}
+
+
+
+#logar{
+    
+margin: 0px 10px 0px 100px;
+    
+width: 487px;
+    
+height: 250px;
+    
+float: left;
+  
+text-align: center;
+
+border: #000 double 5px;
+    
+} 
+
+
+#logar input {
+    width: 250px;
+
+}
+
+
+
+
+#cadastrar{
+
+    
+margin: 0px 100px 0px 10px;
+   
+width: 487px;
+    
+height: 250px;
+    
+float: right;
+    
+border: #000 double 5px;
+    
+text-align: center;
+    
+
+
+
+}
+
+
+#cadastrar input {
+    width: 250px;
+
+}

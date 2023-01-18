@@ -1,169 +1,97 @@
 <!DOCTYPE html>
-    
+
 <html>
     <head>
-        <title>Compras</title>
+        <title>Super Compras IFG</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="jquery-ui.css" rel="stylesheet">
-        <link href="../estilos/estilo.css" rel="stylesheet" type="text/css"/>
-            
-        <style>
-            #titulo{
-                
-            }
-            
-        </style>
-            
-        <script src="external/jquery/jquery.js"></script>
-            
-        <script src="jquery-ui.js"></script>
-            
-        <script>
-            $(function() {
-                // there's the gallery and the trash
-                var $gallery = $( "#gallery" ),
-                $trash = $( "#trash" );
-                
-                // let the gallery items be draggable
-                $( "li", $gallery ).draggable({
-                    cancel: "a.ui-icon", // clicking an icon won't initiate dragging
-                    revert: "invalid", // when not dropped, the item will revert back to its initial position
-                    containment: "document",
-                    helper: "clone",
-                    cursor: "move"
-                });
-                
-                // let the trash be droppable, accepting the gallery items
-                $trash.droppable({
-                    accept: "#gallery > li",
-                    activeClass: "ui-state-highlight",
-                    drop: function( event, ui ) {
-                        deleteImage( ui.draggable );
-                    }
-                });
-                
-                // let the gallery be droppable as well, accepting items from the trash
-                $gallery.droppable({
-                    accept: "#trash li",
-                    activeClass: "custom-state-active",
-                    drop: function( event, ui ) {
-                        recycleImage( ui.draggable );
-                    }
-                });
-                
-                // image deletion function
-                var recycle_icon = "<a href='link/to/recycle/script/when/we/have/js/off' title='Recycle this image' class='ui-icon ui-icon-refresh'>Recycle image</a>";
-                function deleteImage( $item ) {
-                    $item.fadeOut(function() {
-                        var $list = $( "ul", $trash ).length ?
-                            $( "ul", $trash ) :
-                            $( "<ul class='gallery ui-helper-reset'/>" ).appendTo( $trash );
-                        
-                        $item.find( "a.ui-icon-cart" ).remove();
-                        $item.append( recycle_icon ).appendTo( $list ).fadeIn(function() {
-                            $item
-                            .animate({ width: "48px" })
-                            .find( "img" )
-                            .animate({ height: "36px" });
-                        });
-                    });
-                }
-                
-                // image recycle function
-                var trash_icon = "<a href='link/to/trash/script/when/we/have/js/off' title='Delete this image' class='ui-icon ui-icon-cart'>Delete image</a>";
-                function recycleImage( $item ) {
-                    $item.fadeOut(function() {
-                        $item
-                        .find( "a.ui-icon-refresh" )
-                        .remove()
-                        .end()
-                        .css( "width", "96px")
-                        .append( trash_icon )
-                        .find( "img" )
-                        .css( "height", "72px" )
-                        .end()
-                        .appendTo( $gallery )
-                        .fadeIn();
-                    });
-                }
-     
-                
-                // resolve the icons behavior with event delegation
-                $( "ul.gallery > li" ).click(function( event ) {
-                    var $item = $( this ),
-                    $target = $( event.target );
-                    
-                    if ( $target.is( "a.ui-icon-cart" ) ) {
-                        deleteImage( $item );
-                    } else if ( $target.is( "a.ui-icon-zoomin" ) ) {
-                        viewLargerImage( $target );
-                    } else if ( $target.is( "a.ui-icon-refresh" ) ) {
-                        recycleImage( $item );
-                    }
-                    
-                    return false;
-                });
-            });
-        </script>
+        <link href="../Jquery ui/jquery-ui.css" rel="stylesheet">
+        <link href="../Estilos/estilo.css" rel="stylesheet" type="text/css">            
+        <script src="../Jquery ui/external/jquery/jquery.js"></script>
+        <script src="../Jquery ui/jquery-ui.js"></script>
+        <script src="../Script/meuScript.js"></script>
+        <link href ="../Jquery ui/jquery-ui.theme.css" type="text/css" rel ="stylesheet">    
     </head>
-        
+
     <body>
-        
-        <div id="titulo">Super Compras IFG</div>
-        
+
+        <div id="titulo">
+            Super Compras IFG
+            <img  src="../Imagens/carrinho.png" height="50" width="80">
+            <div id="trash" class="ui-widget-content ui-state-default">
+                <h4 class="ui-widget-header">Carrinho de Compras</h4>
+            </div>
+            <input type="button" value="Comprar" onclick="location.href = 'comprar.html'">
+        </div>
+
+        <div id="menu">
+            <h1 class="ui-widget-header">Categorias</h1>
+            <div id="atributos">
+                <h2>Smartfones</h2>
+                <ul>
+                    <li class="wp">Sansung</li>
+                    <li class="mt">Motorola</li>
+                    <li class="ip">Iphone</li>
+                </ul>
+
+                <h2>Computadores</h2>
+
+                <ul>
+                    <li class="nb">Notebook</li>
+                </ul>    
+            </div>
+        </div>
+        <div id="items">
         <div class="ui-widget ui-helper-clearfix">
-            
+
             <ul id="gallery" class="gallery ui-helper-reset ui-helper-clearfix">
                 <li class="ui-widget-content ui-corner-tr">
                     <h5 class="ui-widget-header">Galaxy S3</h5>
-                    <img src="S3.jpg" alt="The peaks of High Tatras" width="96" height="72">
+                    <img src="../Imagens/S3.jpg" alt="The peaks of High Tatras" width="96" height="72">
                     <a href="link/to/trash/script/when/we/have/js/off" title="Delete this image" class="ui-icon ui-icon-cart">Delete image</a>
                 </li>
                 <li class="ui-widget-content ui-corner-tr">
                     <h5 class="ui-widget-header">Galaxy S4</h5>
-                    <img src="S4.png" alt="The chalet at the Green mountain lake" width="96" height="72">
+                    <img src="../Imagens/S4.png" alt="The chalet at the Green mountain lake" width="96" height="72">
                     <a href="link/to/trash/script/when/we/have/js/off" title="Delete this image" class="ui-icon ui-icon-cart">Delete image</a>
                 </li>
                 <li class="ui-widget-content ui-corner-tr">
                     <h5 class="ui-widget-header">Galaxy S5</h5>
-                    <img src="S5.jpg" alt="Planning the ascent" width="96" height="72">
+                    <img src="../Imagens/S5.jpg" alt="Planning the ascent" width="96" height="72">
                     <a href="link/to/trash/script/when/we/have/js/off" title="Delete this image" class="ui-icon ui-icon-cart">Delete image</a>
                 </li>
                 <li class="ui-widget-content ui-corner-tr">
                     <h5 class="ui-widget-header">Moto E</h5>
-                    <img src="motoE.jpg" alt="On top of Kozi kopka" width="96" height="72">
+                    <img src="../Imagens/motoE.jpg" alt="On top of Kozi kopka" width="96" height="72">
                     <a href="link/to/trash/script/when/we/have/js/off" title="Delete this image" class="ui-icon ui-icon-cart">Delete image</a>
                 </li>
                 <li class="ui-widget-content ui-corner-tr">
                     <h5 class="ui-widget-header">Moto G</h5>
-                    <img src="motoG.jpg" alt="On top of Kozi kopka" width="96" height="72">
+                    <img src="../Imagens/motoG.jpg" alt="On top of Kozi kopka" width="96" height="72">
                     <a href="link/to/trash/script/when/we/have/js/off" title="Delete this image" class="ui-icon ui-icon-cart">Delete image</a>
                 </li>
                 <li class="ui-widget-content ui-corner-tr">
                     <h5 class="ui-widget-header">Moto X</h5>
-                    <img src="motoX.jpg" alt="On top of Kozi kopka" width="96" height="72">
+                    <img src="../Imagens/motoX.jpg" alt="On top of Kozi kopka" width="96" height="72">
                     <a href="link/to/trash/script/when/we/have/js/off" title="Delete this image" class="ui-icon ui-icon-cart">Delete image</a>
                 </li>
                 <li class="ui-widget-content ui-corner-tr">
                     <h5 class="ui-widget-header">iPhone 4s</h5>
-                    <img src="iphone4s.png" alt="On top of Kozi kopka" width="96" height="72">
+                    <img src="../Imagens/iphone4s.png" alt="On top of Kozi kopka" width="96" height="72">
                     <a href="link/to/trash/script/when/we/have/js/off" title="Delete this image" class="ui-icon ui-icon-cart">Delete image</a>
                 </li>
                 <li class="ui-widget-content ui-corner-tr">
                     <h5 class="ui-widget-header">iPhone 5</h5>
-                    <img src="iphone5.png" alt="On top of Kozi kopka" width="96" height="72">
+                    <img src="../Imagens/iphone5.png" alt="On top of Kozi kopka" width="96" height="72">
                     <a href="link/to/trash/script/when/we/have/js/off" title="Delete this image" class="ui-icon ui-icon-cart">Delete image</a>
                 </li>
                 <li class="ui-widget-content ui-corner-tr">
                     <h5 class="ui-widget-header">iPhone 5s</h5>
-                    <img src="iphone5s.png" alt="On top of Kozi kopka" width="96" height="72">
+                    <img src="../Imagens/iphone5s.png" alt="On top of Kozi kopka" width="96" height="72">
                     <a href="link/to/trash/script/when/we/have/js/off" title="Delete this image" class="ui-icon ui-icon-cart">Delete image</a>
                 </li>
             </ul>
-                
-            
-                
+
         </div>
-            
+        </div>
     </body>
 </html>
